@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Produto as ProdutoType } from '../../App'
+import { Produto } from '../../types'
 import { adicionar } from '../../store/reducers/carrinho'
 import { adicionarOuRemover } from '../../store/reducers/favoritos'
 import { RootReducer } from '../../store'
@@ -11,7 +11,7 @@ export const paraReal = (valor: number) =>
     currency: 'BRL'
   }).format(valor)
 
-const ProdutoComponent = ({ produto }: { produto: ProdutoType }) => {
+const ProdutoComponent = ({ produto }: { produto: Produto }) => {
   const dispatch = useDispatch()
   const favoritos = useSelector((state: RootReducer) => state.favoritos.itens)
   const estaNosFavoritos = favoritos.some((f) => f.id === produto.id)
